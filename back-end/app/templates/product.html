@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+
+{% block title %}Sản Phẩm{% endblock %}
+
+{% block content %}
+<h1>Danh sách Sản Phẩm</h1>
+<ul>
+    {% for product in products %}
+        <li>{{ product.name }}</li>
+    {% else %}
+        <li>Không có sản phẩm nào.</li>
+    {% endfor %}
+</ul>
+{% endblock %}

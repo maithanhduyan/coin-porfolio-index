@@ -1,0 +1,37 @@
+{% extends 'base.html' %}
+
+{% block title %}Portfolios{% endblock %}
+
+{% block scripts %}{% endblock %}
+
+{% block styles %}{% endblock %}
+
+{% block content %}
+<div class="container">
+    <h1 class="mt-5">Portfolios</h1>
+    {% if portfolios %} {% for portfolio in portfolios %}
+    <div class="card mt-4">
+        <div class="card-header">
+            <h2>{{ portfolio.name }}</h2>
+            <p>User: {{ portfolio.user.username }}</p>
+        </div>
+        <div class="card-body">
+            {% if portfolio.coin_portfolios %}
+            <h3>Coins:</h3>
+            <ul>
+                {% for cp in portfolio.coin_portfolios %}
+                <li>{{ cp.coin.name }} ({{ cp.coin.symbol }})</li>
+                {% endfor %}
+            </ul>
+            {% else %}
+            <p>No coins in this portfolio.</p>
+            {% endif %}
+        </div>
+    </div>
+    {% endfor %} {% else %}
+    <p>No portfolios available.</p>
+    {% endif %}
+</div>
+
+{% endblock %}
+

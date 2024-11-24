@@ -1,0 +1,35 @@
+{% extends 'base.html' %}
+
+{% block title %}Coin List{% endblock %}
+
+{% block scripts %}{% endblock %}
+
+{% block styles %}{% endblock %}
+
+{% block content %}
+<div class="container">
+  <h1 class="mt-5">List of Coins</h1>
+  <table class="table table-striped mt-3">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Symbol</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% if coins %} {% for coin in coins %}
+      <tr>
+        <td>
+          <a href="{{ url_for('coin.coin_detail', coin_id=coin.id) }}">{{ coin.name }}</a>
+        </td>
+        <td>{{ coin.symbol }}</td>
+      </tr>
+      {% endfor %} {% else %}
+      <tr>
+        <td colspan="2">No coins available.</td>
+      </tr>
+      {% endif %}
+    </tbody>
+  </table>
+</div>
+{% endblock %}
